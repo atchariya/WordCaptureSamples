@@ -27,8 +27,7 @@ Public Function VB_WindowProc(ByVal Hwnd As Long, ByVal wMsg As Long, ByVal wPar
                 m_WCapture.GetCaretInfo hwndCliked, X, Y
                 Call Form1.m_wMonitor_WEvent(hwndCliked, X, Y, X, Y)
             ElseIf wParam = m_nHotkeySelectedTextId Then
-                 m_WCapture.GetCaretInfo hwndCliked, X, Y
-                Call Form1.m_wMonitor_WEvent(hwndCliked, X, Y, X, Y)
+                Call Form1.m_wMonitor_WEvent(hwndCliked, -1, -1, -1, -1)
             End If
         End If
         VB_WindowProc = CallWindowProc(OldWndProc, Hwnd, wMsg, wParam, lParam)

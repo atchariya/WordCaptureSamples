@@ -211,6 +211,12 @@ Private Sub PerformCapture(ByVal Hwnd As Long, ByVal x1 As Long, ByVal y1 As Lon
     
     ' set the getContext flag
     wOptions = wOptions Or W_CAPTURE_OPTIONS.wCaptureOptionsGetContext
+    
+    ' set the "capture selected text" flag
+    If (x1 = -1 And y1 = -1) Then
+        wOptions = wOptions Or W_CAPTURE_OPTIONS.wCaptureOptionsGetSelectedText
+    End If
+    
     'set capture parameters
     objInput.Hwnd = Hwnd
     objInput.StartX = x1
