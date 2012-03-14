@@ -51,8 +51,7 @@ BOOL CtestDlg::OnInitDialog()
 	StartMonitoring();
 
 	g_pMonitorEventListener = new CWEventListener(this->m_hWnd);
-	g_pMonitorEventListener->AddRef();
-	g_pMonitorEventListener->AttachToSource(g_wMonitor);
+	g_pMonitorEventListener->DispEventAdvise(g_wMonitor);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -159,7 +158,7 @@ void CtestDlg::ReleaseObjects()
     }
 	if(g_pMonitorEventListener)
 	{
-		g_pMonitorEventListener->DetachFromSource();
+		g_pMonitorEventListener->DispEventUnadvise(g_wMonitor);
 		g_pMonitorEventListener->Release();
 	}
     if(g_wMonitor)
